@@ -9,7 +9,7 @@ public class CompanionCube : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb.AddForce(new Vector2(500f, 500f));
+        rb.AddForce(new Vector2(100f, 100f));
     }
 
     // Update is called once per frame
@@ -20,7 +20,7 @@ public class CompanionCube : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        float bounce = 500f; //amount of force to apply
+        float bounce = 100f; //amount of force to apply
         rb.AddForce(collision.contacts[0].normal * bounce);
         rb.MoveRotation(collision.contacts[0].normalImpulse);
     }
