@@ -9,7 +9,6 @@ public class CompanionCube : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb.AddForce(new Vector2(500f, 500f));
     }
 
     // Update is called once per frame
