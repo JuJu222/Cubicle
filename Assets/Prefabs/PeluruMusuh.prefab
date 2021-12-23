@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 2470323945550193477}
   - component: {fileID: 6699543979501949010}
   - component: {fileID: -2497099597797844532}
-  - component: {fileID: 7580758287268436811}
+  - component: {fileID: 562672565923783352}
   m_Layer: 0
   m_Name: PeluruMusuh
-  m_TagString: Untagged
+  m_TagString: PeluruMusuh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,8 +27,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7115439739124876417}
   m_LocalRotation: {x: 0.007358455, y: -0.0022275674, z: 0.6834467, w: 0.7299599}
-  m_LocalPosition: {x: -1.04, y: 0.07, z: 0}
-  m_LocalScale: {x: 0.27224505, y: 0.63614744, z: 1}
+  m_LocalPosition: {x: -1.2482, y: 0.1366, z: 0.0023}
+  m_LocalScale: {x: 0.15223943, y: 0.1540749, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 100
-  m_Sprite: {fileID: 21300000, guid: 43debcb45432c8d46b0e5dc495bfc126, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d3a8a220d67766b459750343d0471950, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -97,9 +97,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09e741232ddcd0a49b884fd626ad243f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
---- !u!61 &7580758287268436811
-BoxCollider2D:
+  speed: 15
+--- !u!70 &562672565923783352
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -111,16 +111,6 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.79, y: 0.33}
-    newSize: {x: 2.79, y: 0.33}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.79, y: 0.33}
-  m_EdgeRadius: 0
+  m_Offset: {x: -0.000000029802322, y: -0.0000009536743}
+  m_Size: {x: 0.87999994, y: 0.8800002}
+  m_Direction: 0

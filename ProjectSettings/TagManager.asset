@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Enemy
   - Wall
+  - PeluruMusuh
+  - Peluru
   layers:
   - Default
   - TransparentFX
