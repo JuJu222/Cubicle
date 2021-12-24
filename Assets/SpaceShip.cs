@@ -10,11 +10,11 @@ public class SpaceShip : MonoBehaviour
     public GameObject laser;
     private float shootCooldown = 0.3f;
     private float shootTimer = 0;
+    private bool stunned = false;
 
     // Start is called before the first frame update
     void Start()
     {
-
     }
 
     // Update is called once per frame
@@ -114,6 +114,67 @@ public class SpaceShip : MonoBehaviour
                 newLaser.transform.Rotate(new Vector3(0, 0, 180f));
                 shootTimer = 0;
             }
+        }
+    }
+
+    private void ShootAllDirections()
+	{
+        var newLaser1 = Instantiate(laser);
+        newLaser1.transform.position = this.transform.position;
+        newLaser1.transform.Rotate(new Vector3(0, 0, 45f));
+
+        var newLaser2 = Instantiate(laser);
+        newLaser2.transform.position = this.transform.position;
+        newLaser2.transform.Rotate(new Vector3(0, 0, -45f));
+
+        var newLaser3 = Instantiate(laser);
+        newLaser3.transform.position = this.transform.position;
+        newLaser3.transform.Rotate(new Vector3(0, 0, 135f));
+
+        var newLaser4 = Instantiate(laser);
+        newLaser4.transform.position = this.transform.position;
+        newLaser4.transform.Rotate(new Vector3(0, 0, -135f));
+
+        var newLaser5 = Instantiate(laser);
+        newLaser5.transform.position = this.transform.position;
+        newLaser5.transform.Rotate(new Vector3(0, 0, 90f));
+
+        var newLaser6 = Instantiate(laser);
+        newLaser6.transform.position = this.transform.position;
+        newLaser6.transform.Rotate(new Vector3(0, 0, -90f));
+
+        var newLaser7 = Instantiate(laser);
+        newLaser7.transform.position = this.transform.position;
+        newLaser7.transform.Rotate(new Vector3(0, 0, 0f));
+
+        var newLaser8 = Instantiate(laser);
+        newLaser8.transform.position = this.transform.position;
+        newLaser8.transform.Rotate(new Vector3(0, 0, 180f));
+    }
+
+    IEnumerator explode()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            yield return new WaitForSeconds(0.1f);
+            ShootAllDirections();
+        }
+    }
+
+    IEnumerator waiter()
+    {
+        yield return new WaitForSeconds(0.5f);
+        rb.constraints = RigidbodyConstraints2D.None;
+    }
+
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.CompareTag("PeluruMusuh"))
+        {
+            stunned = true;
+            rb.constraints = RigidbodyConstraints2D.FreezeAll;
+
+            StartCoroutine(waiter());
         }
     }
 }

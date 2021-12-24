@@ -4,38 +4,25 @@ using UnityEngine;
 
 public class PeluruMusuh : MonoBehaviour
 {
-
     public float speed;
-    private Transform player;
-
-    Vector3 translationVec;
-    private Vector2 target;
+    public Rigidbody2D rb;
 
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-        target = new Vector2(player.position.x, player.position.y);
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-        transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime);
-        if(transform.position.x == target.x && transform.position.y == target.y){
-            DestroyProjectile();
-        }
+        rb.velocity = transform.TransformDirection(Vector2.right * speed);
     }
 
     void OnTriggerEnter2D(Collider2D other){
-         if(other.CompareTag("Player")){
-             DestroyProjectile();
-             //Increase danger bar here
-         }
-    }
-
-    void DestroyProjectile(){
-        Destroy(this.gameObject);
+         if(other.CompareTag("Player"))
+         {
+            Destroy(this.gameObject);
+        }
     }
 }

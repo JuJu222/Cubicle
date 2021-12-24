@@ -28,8 +28,10 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        transform.right = player.position - transform.position;
+
         //Kalau jauh maka musuh akan mendekat spaceship
-        if(Vector2.Distance(transform.position, player.position) > stoppingDistance){
+        if (Vector2.Distance(transform.position, player.position) > stoppingDistance){
             transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
         //Jika tidak terlalu deket maka musuh akan diam ditempat dan nembak
         }else if(Vector2.Distance(transform.position, player.position) < stoppingDistance && Vector2.Distance(transform.position, player.position) > retreatDistance){
@@ -41,7 +43,9 @@ public class Enemy : MonoBehaviour
 
         if (timeBetweenShots <= 0)
         {
-            Instantiate(projectile, transform.position, Quaternion.identity);
+            var newLaser = Instantiate(projectile);
+            newLaser.transform.position = this.transform.position;
+            newLaser.transform.rotation = this.transform.rotation;
             timeBetweenShots = startTimeBetweenShots;
         }
         else
@@ -53,8 +57,6 @@ public class Enemy : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        rb.MoveRotation(collision.contacts[0].normalImpulse);
-
         if (collision.gameObject.tag == "Peluru")
 		{
             Destroy(gameObject);
