@@ -32,5 +32,11 @@ public class Laser : MonoBehaviour
             Destroy(gameObject);
             spaceShip.dangerPercent += 5;
         }
+
+        //Added collision to companion
+        if(collision.gameObject.tag == "Companion")
+        {
+            Destroy(gameObject);
+        }
     }
 }
