@@ -38,10 +38,8 @@ public class WaveSpawner : MonoBehaviour
         //Nambah satu mati
         counterDeath++;
         //jumlah mati >= level ? 
-        if (counterDeath >= wave)
-        {
-
-            
+        if (counterDeath == wave)
+        {          
             wave++;
             waveHUD.text = "Wave: " + wave;
             for (int i = 0; i < wave; i++)

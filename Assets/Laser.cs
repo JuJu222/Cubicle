@@ -7,11 +7,12 @@ public class Laser : MonoBehaviour
     public float speed = 50f;
     Vector3 translationVec;
     public Rigidbody2D rb;
+    SpaceShip spaceShip;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        spaceShip = GameObject.Find("SpaceShip").GetComponent<SpaceShip>();
     }
 
     // Update is called once per frame
@@ -29,6 +30,7 @@ public class Laser : MonoBehaviour
 
         if(collision.gameObject.tag == "Enemy"){
             Destroy(gameObject);
+            spaceShip.dangerPercent += 5;
         }
     }
 }

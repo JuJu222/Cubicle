@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SpaceShip : MonoBehaviour
 {
@@ -11,22 +12,27 @@ public class SpaceShip : MonoBehaviour
     private float shootCooldown = 0.3f;
     private float shootTimer = 0;
     private bool stunned = false;
+    public Image dangerBar;
+    public float dangerPercent = 100;
 
     // Start is called before the first frame update
     void Start()
     {
+        StartCoroutine(DepletingDangerPerecentage());
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        dangerBar.fillAmount = dangerPercent / 100;
         shootTimer += Time.deltaTime;
 
         var horizontalInput = Input.GetAxis("Horizontal");
         var verticalInput = Input.GetAxis("Vertical");
         rb.velocity = new Vector2(horizontalInput * speed, verticalInput * speed);
 
-        if (Input.GetKey(KeyCode.LeftArrow) && Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.LeftArrow) && Input.GetKey(KeyCode.UpArrow) && !stunned)
         {
             rb.MoveRotation(45f);
             if (shootTimer > shootCooldown)
@@ -38,7 +44,7 @@ public class SpaceShip : MonoBehaviour
             }
 
         }
-        else if (Input.GetKey(KeyCode.RightArrow) && Input.GetKey(KeyCode.UpArrow))
+        else if (Input.GetKey(KeyCode.RightArrow) && Input.GetKey(KeyCode.UpArrow) && !stunned)
         {
             rb.MoveRotation(-45f);
             if (shootTimer > shootCooldown)
@@ -49,7 +55,7 @@ public class SpaceShip : MonoBehaviour
                 shootTimer = 0;
             }
         }
-        else if (Input.GetKey(KeyCode.LeftArrow) && Input.GetKey(KeyCode.DownArrow))
+        else if (Input.GetKey(KeyCode.LeftArrow) && Input.GetKey(KeyCode.DownArrow) && !stunned)
         {
             rb.MoveRotation(135f);
             if (shootTimer > shootCooldown)
@@ -60,7 +66,7 @@ public class SpaceShip : MonoBehaviour
                 shootTimer = 0;
             }
         }
-        else if (Input.GetKey(KeyCode.RightArrow) && Input.GetKey(KeyCode.DownArrow))
+        else if (Input.GetKey(KeyCode.RightArrow) && Input.GetKey(KeyCode.DownArrow) && !stunned)
         {
             rb.MoveRotation(-135f);
             if (shootTimer > shootCooldown)
@@ -71,7 +77,7 @@ public class SpaceShip : MonoBehaviour
                 shootTimer = 0;
             }
         }
-        else if (Input.GetKey(KeyCode.LeftArrow))
+        else if (Input.GetKey(KeyCode.LeftArrow) && !stunned)
         {
             rb.MoveRotation(90f);
             if (shootTimer > shootCooldown)
@@ -82,7 +88,7 @@ public class SpaceShip : MonoBehaviour
                 shootTimer = 0;
             }
         }
-        else if (Input.GetKey(KeyCode.RightArrow))
+        else if (Input.GetKey(KeyCode.RightArrow) && !stunned)
         {
             rb.MoveRotation(-90f);
             if (shootTimer > shootCooldown)
@@ -93,7 +99,7 @@ public class SpaceShip : MonoBehaviour
                 shootTimer = 0;
             }
         }
-        else if (Input.GetKey(KeyCode.UpArrow))
+        else if (Input.GetKey(KeyCode.UpArrow) && !stunned)
         {
             rb.MoveRotation(0f);
             if (shootTimer > shootCooldown)
@@ -104,7 +110,7 @@ public class SpaceShip : MonoBehaviour
                 shootTimer = 0;
             }
         }
-        else if (Input.GetKey(KeyCode.DownArrow))
+        else if (Input.GetKey(KeyCode.DownArrow) && !stunned)
         {
             rb.MoveRotation(180f);
             if (shootTimer > shootCooldown)
@@ -115,9 +121,18 @@ public class SpaceShip : MonoBehaviour
                 shootTimer = 0;
             }
         }
+
+        if (dangerPercent <= 0)
+		{
+            dangerPercent = 100;
+            StartCoroutine(Explode());
+        } else if (dangerPercent > 100)
+		{
+            dangerPercent = 100;
+        }
     }
 
-    private void ShootAllDirections()
+    public void ShootAllDirections()
 	{
         var newLaser1 = Instantiate(laser);
         newLaser1.transform.position = this.transform.position;
@@ -152,19 +167,29 @@ public class SpaceShip : MonoBehaviour
         newLaser8.transform.Rotate(new Vector3(0, 0, 180f));
     }
 
-    IEnumerator explode()
+    IEnumerator DepletingDangerPerecentage()
     {
-        for (int i = 0; i < 5; i++)
+        while (true)
         {
             yield return new WaitForSeconds(0.1f);
+            dangerPercent -= 1;
+        }
+    }    
+    
+    IEnumerator Explode()
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            yield return new WaitForSeconds(0.15f);
             ShootAllDirections();
         }
     }
 
-    IEnumerator waiter()
+    IEnumerator Waiter()
     {
         yield return new WaitForSeconds(0.5f);
         rb.constraints = RigidbodyConstraints2D.None;
+        stunned = false;
     }
 
     void OnTriggerEnter2D(Collider2D collider)
@@ -174,7 +199,7 @@ public class SpaceShip : MonoBehaviour
             stunned = true;
             rb.constraints = RigidbodyConstraints2D.FreezeAll;
 
-            StartCoroutine(waiter());
+            StartCoroutine(Waiter());
         }
     }
 }
