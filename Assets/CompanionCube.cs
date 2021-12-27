@@ -30,7 +30,7 @@ public class CompanionCube : MonoBehaviour
 
         if (collision.gameObject.tag == "Peluru")
         {
-            health = health - 10;
+            health = health - 30;
         }
     }
 }

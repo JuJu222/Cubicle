@@ -1359,7 +1359,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8867957854275653223, guid: 459a094afc1620f4bb22fe51cd9edc01, type: 3}
       propertyPath: m_Name
-      value: Rectangle 2
+      value: Companion
       objectReference: {fileID: 0}
     - target: {fileID: 8867957854275653223, guid: 459a094afc1620f4bb22fe51cd9edc01, type: 3}
       propertyPath: m_Layer
