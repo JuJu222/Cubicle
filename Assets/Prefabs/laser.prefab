@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -1163114586371264185}
   - component: {fileID: 9179279684137861005}
   - component: {fileID: -1443718901133300147}
+  - component: {fileID: 9186083802098358427}
   m_Layer: 7
   m_Name: laser
   m_TagString: Peluru
@@ -137,3 +138,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &9186083802098358427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1041720258658776491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8f6d3c6e4250e84192f5b34ce9e71bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  glowColor: {r: 1, g: 1, b: 1, a: 1}
+  glowBrightness: 2
+  outlineWidth: 10
+  alphaThreshold: 0.01
+  drawOutside: 0
+  enableInstancing: 0

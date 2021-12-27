@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -2497099597797844532}
   - component: {fileID: 562672565923783352}
   - component: {fileID: -7835205432899219282}
+  - component: {fileID: 1842635133215546635}
   m_Layer: 0
   m_Name: PeluruMusuh
   m_TagString: PeluruMusuh
@@ -137,3 +138,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1842635133215546635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7115439739124876417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8f6d3c6e4250e84192f5b34ce9e71bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  glowColor: {r: 0.38679248, g: 0, b: 0, a: 1}
+  glowBrightness: 5
+  outlineWidth: 10
+  alphaThreshold: 0.01
+  drawOutside: 0
+  enableInstancing: 0
