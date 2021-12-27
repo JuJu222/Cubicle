@@ -5,6 +5,7 @@ using UnityEngine;
 public class CompanionCube : MonoBehaviour
 {
     public Rigidbody2D rb;
+    private static int health = 500;
 
     // Start is called before the first frame update
     void Start()
@@ -15,7 +16,10 @@ public class CompanionCube : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -23,5 +27,10 @@ public class CompanionCube : MonoBehaviour
         float bounce = 100f; //amount of force to apply
         rb.AddForce(collision.contacts[0].normal * bounce);
         rb.MoveRotation(collision.contacts[0].normalImpulse);
+
+        if (collision.gameObject.tag == "Peluru")
+        {
+            health = health - 10;
+        }
     }
 }
