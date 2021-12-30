@@ -5,11 +5,18 @@ using UnityEngine;
 public class CompanionCube : MonoBehaviour
 {
     public Rigidbody2D rb;
+
+    public GameOver gameOver;
+
+    public void GameOver(){
+        gameOver.Setup();
+    }
     private static int health = 500;
 
     // Start is called before the first frame update
     void Start()
     {
+        health = 500;
         rb.AddForce(new Vector2(100f, 100f));
     }
 
@@ -18,7 +25,8 @@ public class CompanionCube : MonoBehaviour
     {
         if (health <= 0)
         {
-            Destroy(gameObject);
+                GameOver();
+                Destroy(gameObject);
         }
     }
 

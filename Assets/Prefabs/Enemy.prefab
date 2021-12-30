@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
+  effect: {fileID: 8828164878288178419, guid: fdc5830d070464c488a1b2c45c2dd92c, type: 3}
   stoppingDistance: 5.5
   waveSpawner: {fileID: 0}
   retreatDistance: 5
@@ -170,7 +171,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
-  m_Pitch: 1
+  m_Pitch: -3
   Loop: 0
   Mute: 0
   Spatialize: 0

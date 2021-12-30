@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public float speed;
+    public GameObject effect;
     public float stoppingDistance;
 
     public WaveSpawner waveSpawner;
@@ -59,8 +60,8 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.tag == "Peluru")
 		{
+            Instantiate(effect, transform.position, Quaternion.identity);
             Destroy(gameObject);
-
             waveSpawner.AddDeath();
         }
     }
