@@ -1,22 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CompanionCube : MonoBehaviour
 {
     public Rigidbody2D rb;
-
     public GameOver gameOver;
+    public Text waveHUD;
+    private static int health;
 
     public void GameOver(){
         gameOver.Setup();
     }
-    private static int health = 500;
 
     // Start is called before the first frame update
     void Start()
     {
-        health = 500;
+        health = 100;
         rb.AddForce(new Vector2(100f, 100f));
     }
 
@@ -25,8 +26,12 @@ public class CompanionCube : MonoBehaviour
     {
         if (health <= 0)
         {
-                GameOver();
-                Destroy(gameObject);
+            GameOver();
+            Destroy(gameObject);
+            Destroy(GameObject.FindGameObjectWithTag("Player"));
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            foreach (GameObject enemy in enemies)
+                GameObject.Destroy(enemy);
         }
     }
 
@@ -38,7 +43,8 @@ public class CompanionCube : MonoBehaviour
 
         if (collision.gameObject.tag == "Peluru")
         {
-            health = health - 30;
+            health -= 3;
+            waveHUD.text = "" + health;
         }
     }
 }
