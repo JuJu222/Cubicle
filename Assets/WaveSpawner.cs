@@ -39,7 +39,8 @@ public class WaveSpawner : MonoBehaviour
         counterDeath++;
         //jumlah mati >= level ? 
         if (counterDeath == wave)
-        {          
+        {      
+            ScoreScript.scoreValue += 10;    
             wave++;
             waveHUD.text = "Wave: " + wave;
             for (int i = 0; i < wave; i++)

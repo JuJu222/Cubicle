@@ -60,6 +60,7 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.tag == "Peluru")
 		{
+            ScoreScript.scoreValue += 5;
             SoundManager.PlaySound("enemydeath");
             Instantiate(effect, transform.position, Quaternion.identity);
             Destroy(gameObject);
