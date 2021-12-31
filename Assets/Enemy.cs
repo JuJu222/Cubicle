@@ -44,6 +44,7 @@ public class Enemy : MonoBehaviour
 
         if (timeBetweenShots <= 0)
         {
+            SoundManager.PlaySound("playerfire");
             var newLaser = Instantiate(projectile);
             newLaser.transform.position = this.transform.position;
             newLaser.transform.rotation = this.transform.rotation;
@@ -53,13 +54,13 @@ public class Enemy : MonoBehaviour
         {
             timeBetweenShots -= Time.deltaTime;
         }
-
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Peluru")
 		{
+            SoundManager.PlaySound("enemydeath");
             Instantiate(effect, transform.position, Quaternion.identity);
             Destroy(gameObject);
             waveSpawner.AddDeath();

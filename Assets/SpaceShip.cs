@@ -37,6 +37,7 @@ public class SpaceShip : MonoBehaviour
             rb.MoveRotation(45f);
             if (shootTimer > shootCooldown)
             {
+                SoundManager.PlaySound("enemyfire");
                 var newLaser = Instantiate(laser);
                 newLaser.transform.position = this.transform.position;
                 newLaser.transform.Rotate(new Vector3(0, 0, 45f));
@@ -49,6 +50,7 @@ public class SpaceShip : MonoBehaviour
             rb.MoveRotation(-45f);
             if (shootTimer > shootCooldown)
             {
+                SoundManager.PlaySound("enemyfire");
                 var newLaser = Instantiate(laser);
                 newLaser.transform.position = this.transform.position;
                 newLaser.transform.Rotate(new Vector3(0, 0, -45f));
@@ -60,6 +62,7 @@ public class SpaceShip : MonoBehaviour
             rb.MoveRotation(135f);
             if (shootTimer > shootCooldown)
             {
+                SoundManager.PlaySound("enemyfire");
                 var newLaser = Instantiate(laser);
                 newLaser.transform.position = this.transform.position;
                 newLaser.transform.Rotate(new Vector3(0, 0, 135f));
@@ -71,6 +74,7 @@ public class SpaceShip : MonoBehaviour
             rb.MoveRotation(-135f);
             if (shootTimer > shootCooldown)
             {
+                SoundManager.PlaySound("enemyfire");
                 var newLaser = Instantiate(laser);
                 newLaser.transform.position = this.transform.position;
                 newLaser.transform.Rotate(new Vector3(0, 0, -135f));
@@ -82,6 +86,7 @@ public class SpaceShip : MonoBehaviour
             rb.MoveRotation(90f);
             if (shootTimer > shootCooldown)
             {
+                SoundManager.PlaySound("enemyfire");
                 var newLaser = Instantiate(laser);
                 newLaser.transform.position = this.transform.position;
                 newLaser.transform.Rotate(new Vector3(0, 0, 90f));
@@ -93,6 +98,7 @@ public class SpaceShip : MonoBehaviour
             rb.MoveRotation(-90f);
             if (shootTimer > shootCooldown)
             {
+                SoundManager.PlaySound("enemyfire");
                 var newLaser = Instantiate(laser);
                 newLaser.transform.position = this.transform.position;
                 newLaser.transform.Rotate(new Vector3(0, 0, -90f));
@@ -104,6 +110,7 @@ public class SpaceShip : MonoBehaviour
             rb.MoveRotation(0f);
             if (shootTimer > shootCooldown)
             {
+                SoundManager.PlaySound("enemyfire");
                 var newLaser = Instantiate(laser);
                 newLaser.transform.position = this.transform.position;
                 newLaser.transform.Rotate(new Vector3(0, 0, 0f));
@@ -115,6 +122,7 @@ public class SpaceShip : MonoBehaviour
             rb.MoveRotation(180f);
             if (shootTimer > shootCooldown)
             {
+                SoundManager.PlaySound("enemyfire");
                 var newLaser = Instantiate(laser);
                 newLaser.transform.position = this.transform.position;
                 newLaser.transform.Rotate(new Vector3(0, 0, 180f));
@@ -181,6 +189,7 @@ public class SpaceShip : MonoBehaviour
         for (int i = 0; i < 10; i++)
         {
             yield return new WaitForSeconds(0.15f);
+            SoundManager.PlaySound("enemyfire");
             ShootAllDirections();
         }
     }
@@ -198,7 +207,6 @@ public class SpaceShip : MonoBehaviour
         {
             stunned = true;
             rb.constraints = RigidbodyConstraints2D.FreezeAll;
-
             StartCoroutine(Waiter());
         }
     }
