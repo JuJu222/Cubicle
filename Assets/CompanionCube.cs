@@ -11,7 +11,9 @@ public class CompanionCube : MonoBehaviour
     private static int health;
 
     public void GameOver(){
+        gameOver.getScore();
         gameOver.Setup();
+        
     }
 
     // Start is called before the first frame update
@@ -26,7 +28,7 @@ public class CompanionCube : MonoBehaviour
     {
         if (health <= 0)
         {
-            GameOver();
+            GameOver(); //After game over delete all gameobjects from scene
             Destroy(gameObject);
             Destroy(GameObject.FindGameObjectWithTag("Player"));
             GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
