@@ -20,12 +20,6 @@ public class ScoreScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.time - lastUpdate >= 1f)
-        {
-            scoreValue += increase;
-            lastUpdate = Time.time;
-        }
-        
         score.text = "Score: " + scoreValue;
     }
 
