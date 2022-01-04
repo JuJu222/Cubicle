@@ -50,8 +50,8 @@ public class WaveSpawner : MonoBehaviour
                 whereToSpawn = new Vector2(randX, randY);
                 var enemy = Instantiate(Enemy, whereToSpawn, Quaternion.identity);
                 enemy.GetComponent<Enemy>().waveSpawner = this;
+                counterDeath = 0;
             }
-            counterDeath = 0;
         }
     }
 }
