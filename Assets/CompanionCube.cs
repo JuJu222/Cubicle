@@ -39,7 +39,7 @@ public class CompanionCube : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        float bounce = 100f; //amount of force to apply
+        float bounce = 500f; //amount of force to apply
         rb.AddForce(collision.contacts[0].normal * bounce);
         rb.MoveRotation(collision.contacts[0].normalImpulse);
 
