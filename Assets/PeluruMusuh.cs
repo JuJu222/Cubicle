@@ -24,5 +24,10 @@ public class PeluruMusuh : MonoBehaviour
          {
             Destroy(this.gameObject);
         }
+
+        if (other.gameObject.tag == "Wall")
+        {
+            Destroy(gameObject);
+        }
     }
 }
