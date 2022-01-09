@@ -28,6 +28,7 @@ public class CompanionCube : MonoBehaviour
     {
         if (health <= 0)
         {
+            
             GameOver(); //After game over delete all gameobjects from scene
             Destroy(gameObject);
             Destroy(GameObject.FindGameObjectWithTag("Player"));

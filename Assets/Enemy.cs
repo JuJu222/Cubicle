@@ -14,9 +14,6 @@ public class Enemy : MonoBehaviour
     public Rigidbody2D rb;
     public Transform player;
 
-    public AudioSource audioSource;
-    public AudioClip shootingAudioClip;
-
     public float startTimeBetweenShots;
     private float timeBetweenShots;
     // Start is called before the first frame update

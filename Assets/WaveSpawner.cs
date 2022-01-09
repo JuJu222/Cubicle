@@ -20,18 +20,22 @@ public class WaveSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+    
         randX = Random.Range(-8.0f, 8.0f);
         randY = Random.Range(-4.0f, 4.0f);
         whereToSpawn = new Vector2(randX, randY);
         var enemy = Instantiate(Enemy, whereToSpawn, Quaternion.identity);
         enemy.GetComponent<Enemy>().waveSpawner = this;
     }
+    
 
     // Update is called once per frame
     void Update()
     {
-
+    
     }
+    
+
 
     public void AddDeath()
     {
