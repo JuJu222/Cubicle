@@ -46,7 +46,7 @@ public class CompanionCube : MonoBehaviour
 
         if (collision.gameObject.tag == "Peluru")
         {
-            health -= 5;
+            health -= 10;
             waveHUD.text = "" + health;
         }
     }
